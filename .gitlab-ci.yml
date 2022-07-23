@@ -34,5 +34,5 @@ test website:
 deploy to surge:
   stage: deploy
   script:
-    - npm install -- global surge
+    - npm install --global surge
     - surge --project ./public --domain Browseshare.surge.sh
