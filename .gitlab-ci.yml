@@ -8,15 +8,15 @@ stages:
   - production test
   - cache
 
-variables:
-  STAGING_DOMAIN: instazone-staging.surge.sh
-  PRODUCTION_DOMAIN: instazone.surge.sh
-
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - node_modules/  
   policy: pull
+
+variables:
+  STAGING_DOMAIN: instazone-staging.surge.sh
+  PRODUCTION_DOMAIN: instazone.surge.sh  
 
 update cache:
   stage: cache
@@ -64,12 +64,11 @@ test website:
   except:
     - schedules
 
-deploy staging:
+deploy staging: 
   stage: deploy staging
   environment:
     name: staging
     url: http://$STAGING_DOMAIN
-  cache: {}
   script:
     - npm install --global surge
     - surge --project ./public --domain $STAGING_DOMAIN
@@ -79,6 +78,8 @@ deploy production:
   environment:
     name: production
     url: $PRODUCTION_DOMAIN
+  when: manual
+  allow_failure: false
   cache: {}
   script:
     - npm install --global surge
