@@ -13,7 +13,7 @@ build website:
     - npm install
     - npm install -g gatsby-cli
     - gatsby build
-    - SED -I "S/%%VERSION%%/$CL_COMMIT_SHORT_SHA/" ./public/index.html
+    - sed -I "S/%%VERSION%%/$CL_COMMIT_SHORT_SHA/" ./public/index.html
   artifacts:
     paths:
       - ./public
