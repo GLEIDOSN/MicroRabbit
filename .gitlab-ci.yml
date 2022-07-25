@@ -15,8 +15,8 @@ cache:
   policy: pull
 
 variables:
-  STAGING_DOMAIN: instazone-staging.surge.sh
-  PRODUCTION_DOMAIN: instazone.surge.sh  
+  STAGING_DOMAIN: Browseshare-staging.surge.sh
+  PRODUCTION_DOMAIN: Browseshare.surge.sh  
 
 update cache:
   stage: cache
